@@ -1,3 +1,3 @@
-add_lunch_combo full_apollo_x-user
-add_lunch_combo full_apollo_x-userdebug
-add_lunch_combo full_apollo_x-eng
+add_lunch_combo full_marino_f-user
+add_lunch_combo full_marino_f-userdebug
+add_lunch_combo full_marino_f-eng

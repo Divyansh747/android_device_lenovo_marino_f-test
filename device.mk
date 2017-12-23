@@ -1,4 +1,4 @@
-LOCAL_PATH := device/vernee/apollo_x
+LOCAL_PATH := device/lenovo/marino_f
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -7,11 +7,11 @@ PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := apollo_x,k15tb_a
+TARGET_OTA_ASSERT_DEVICE := marino_f,XT1902-2
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.mt6797
+    lights.mt6757
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -68,4 +68,4 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, vendor/mad/config/common.mk)
 
 # Vendor
-$(call inherit-product, vendor/vernee/apollo_lite/apollo_lite-vendor.mk)
+$(call inherit-product, vendor/lenovo/marino_f/marino_f-vendor.mk)

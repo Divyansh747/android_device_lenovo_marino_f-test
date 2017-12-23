@@ -1,11 +1,11 @@
 # mt6797 platform boardconfig
-LOCAL_PATH := device/vernee/apollo_x
+LOCAL_PATH := device/lenovo/marino_f
 
 include vendor/mad/config/board.mk
 
 # Platform
 ARCH_ARM_HAVE_TLS_REGISTER := true
-TARGET_BOARD_PLATFORM := mt6797
+TARGET_BOARD_PLATFORM := mt6757
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_FACTORYIMAGE := true
 
@@ -15,10 +15,9 @@ TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := cortex-a53
-# Device haves a combination of cortex a72 + cortex a53
-#2x Cortex-A72 @ 2.1GHz ~ 2.3GHz
+# Device haves 8 cores of cortex a53
 #4x Cortex-A53 @ 1.85GHz
-#4x Cortex-A53 @ 1.4GHz
+#4x Cortex-A53 @ 2.4GHz
 TARGET_CPU_SMP := true
 
 TARGET_2ND_ARCH := arm
@@ -31,7 +30,7 @@ TARGET_USES_64_BIT_BINDER := true
 
 TARGET_CPU_CORTEX_A53 := true
 
-TARGET_BOOTLOADER_BOARD_NAME := mt6797
+TARGET_BOOTLOADER_BOARD_NAME := mt6757
 
 # Kernel
 TARGET_USES_64_BIT_BINDER := true
@@ -40,7 +39,7 @@ BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --base 0x40078000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x04f88000 --second_offset 0x00e88000 --tags_offset 0x03f88000 --board K15TB-A.A.vR15
-TARGET_KERNEL_SOURCE := kernel/vernee/apollo_lite
+TARGET_KERNEL_SOURCE := kernel/lenovo/marino_f
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_CONFIG := mad_val_n1_defconfig
