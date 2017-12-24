@@ -66,8 +66,6 @@ PRODUCT_COPY_FILES += \
 # Dalvik/HWUI
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
-# Common stuff
-$(call inherit-product, vendor/mad/config/common.mk)
 
 # Vendor
 $(call inherit-product, vendor/lenovo/marino_f/marino_f-vendor.mk)

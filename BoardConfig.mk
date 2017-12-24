@@ -1,7 +1,8 @@
 # mt6797 platform boardconfig
 LOCAL_PATH := device/lenovo/marino_f
 
-include vendor/mad/config/board.mk
+# Device board elements
+include $(LOCAL_PATH)/board/*.mk
 
 # Platform
 ARCH_ARM_HAVE_TLS_REGISTER := true
