@@ -1,21 +1,24 @@
-#/bin/sh
+#!/bin/bash
 
-UPDATE_PACKAGE=update.zip
-
-if [ "x$UPDATE_PACKAGE" = "x" ]; then
-    echo You must specify the update.zip as first argument
-    exit
+SYSDIR=$1
+if [ "x$SYSDIR" = "x" ]; then
+echo "You must specify system directory as first argument";
+exit
 fi
 
-BASE=../../../vendor/vernee/apollo_lite/proprietary
+VENDOR=lenovo
+DEVICE=marino_f
+
+BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
+
 rm -rf $BASE/*
 
-for FILE in `egrep -v '(^#|^$)' proprietary-blobs.txt`; do
-  DIR=`dirname $FILE`
-  if [ ! -d $BASE/$DIR ]; then
-    mkdir -p $BASE/$DIR
-  fi
-  unzip -j -o ${UPDATE_PACKAGE} system/$FILE -d $BASE/$DIR
+for FILE in `cat proprietary-blobs.txt | grep -v ^# | grep -v ^$`; do
+    DIR=`dirname $FILE`
+    if [ ! -d $BASE/$DIR ]; then
+        mkdir -p $BASE/$DIR
+    fi
+    cp $SYSDIR/$FILE $BASE/$FILE
 done
 
 ./setup-makefiles.sh
