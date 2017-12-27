@@ -98,8 +98,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 
 # include other configs
-include $(LOCAL_PATH)/config/permissions.mk
-include $(LOCAL_PATH)/config/media.mk
-include $(LOCAL_PATH)/config/wifi.mk
-include $(LOCAL_PATH)/config/telephony.mk
-include $(LOCAL_PATH)/config/google_override.mk
+include $(LOCAL_PATH)/board/permissions.mk
+include $(LOCAL_PATH)/board/media.mk
+include $(LOCAL_PATH)/board/wifi.mk
+include $(LOCAL_PATH)/board/telephony.mk
+include $(LOCAL_PATH)/board/google_override.mk
