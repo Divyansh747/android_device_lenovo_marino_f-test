@@ -15,6 +15,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
 
+	# GPS library
+PRODUCT_PACKAGES += \
+    gps.mt6757 \
+    libcurl
+	
 PRODUCT_PACKAGES += \
     libcurl
 
@@ -22,20 +27,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Chromium
 
-# OmniStyle
-PRODUCT_PACKAGES += \
-    OmniStyle
-
-# OmniJaws
-PRODUCT_PACKAGES += \
-    OmniJaws
-
 
 # Include explicitly to work around Facelock issues
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full
 
 # FMRadio
+MTK_FM_SUPPORT := true
+
 PRODUCT_PACKAGES += \
     libfmjni \
     FMRadio
@@ -61,6 +60,7 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
+    librs_jni \
     com.android.future.usb.accessory
 
 # Charger
@@ -103,3 +103,7 @@ include $(LOCAL_PATH)/board/media.mk
 include $(LOCAL_PATH)/board/wifi.mk
 include $(LOCAL_PATH)/board/telephony.mk
 include $(LOCAL_PATH)/board/google_override.mk
+include $(LOCAL_PATH)/board/camera.mk
+include $(LOCAL_PATH)/board/dalvik.mk
+include $(LOCAL_PATH)/board/EngineeringMode.mk
+include $(LOCAL_PATH)/board/power.mk
