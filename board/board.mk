@@ -102,6 +102,8 @@ TWHAVE_SELINUX := true
 TW_THEME := portrait_hdpi
 TW_EXCLUDE_SUPERSU := true
 TW_EXTRA_LANGUAGES := true
+TW_NO_SCREEN_BLANK := true
+
 
 # Time Zone data for Recovery
 PRODUCT_COPY_FILES += \
