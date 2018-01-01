@@ -5,4 +5,4 @@ PRODUCT_PACKAGES += \
 # Power
 PRODUCT_PACKAGES += \
     power.default \
-    power.mt6753
+    power.mt6757
