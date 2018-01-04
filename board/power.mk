@@ -1,8 +1,2 @@
 # Charger
-PRODUCT_PACKAGES += \
-    charger
-
-# Power
-PRODUCT_PACKAGES += \
-    power.default \
-    power.mt6757
+BOARD_CHARGER_SHOW_PERCENTAGE := true

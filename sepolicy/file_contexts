@@ -1,33 +1,68 @@
-# Sysfs nodes
-/sys/devices/soc/soc:touch@/smartwake_active                    u:object_r:smartwake_sysfs:s0
-/sys/devices/soc/soc:touch@/wakeup_gesture                  	u:object_r:smartwake_sysfs:s0
+#
+#############################
+# Custom files
+/custom(/.*)?		u:object_r:custom_file:s0
 
-
-
-# exfat & ntfs
-/system/bin/mkfs\.exfat                                         u:object_r:mkfs_exec:s0
-/system/bin/mkfs\.ntfs                                          u:object_r:mkfs_exec:s0
-/system/bin/mount\.ntfs                                         u:object_r:mkfs_exec:s0
-/system/bin/mount\.exfat                                        u:object_r:mkfs_exec:s0
-/system/bin/fsck\.ntfs                                          u:object_r:fsck_exec:s0
-/system/bin/fsck\.exfat                                         u:object_r:fsck_exec:s0
+/dev/block/mtd(.*)?     u:object_r:mtd_device:s0
 
 #############################
 # Executables
 # Meta/Factory Mode multi_init
 /sbin/multi_init		u:object_r:init_exec:s0
 
-# Meta mode
-/system/bin/meta_tst                                            u:object_r:meta_tst_exec:s0
-/system/bin/factory                                             u:object_r:factory_exec:s0
 
-# Files from firmware/nv partitions
-/protect_f(/.*)?                                                u:object_r:protect_f_data_file:s0
-/protect_s(/.*)?                                                u:object_r:protect_s_data_file:s0
-/nvdata(/.*)?                                                   u:object_r:nvdata_file:s0
-/data/nvram(/.*)?                                               u:object_r:nvdata_file:s0
+#############################
+# Data files
+#
+/data/aee_exp(/.*)?  u:object_r:aee_exp_data_file:s0
+/data/agps_supl(/.*)?    u:object_r:agpsd_data_file:s0
+/data/misc/gps(/.*)?   u:object_r:gps_data_file:s0
+/data/anr/SF_RTT(/.*)? u:object_r:sf_rtt_file:s0
+/data/app/mcRegistry(/.*)? u:object_r:mobicore_data_file:s0
+/data/ccci_cfg(/.*)? u:object_r:ccci_cfg_file:s0
+/data/flashless(/.*)? u:object_r:c2k_file:s0
+/data/core(/.*)? u:object_r:aee_core_data_file:s0
+/data/dontpanic(/.*)? u:object_r:dontpanic_data_file:s0
+/data/dumpsys(/.*)?    u:object_r:aee_dumpsys_data_file:s0
+/data/extmdl(/.*)? u:object_r:mdlog_data_file:s0
+/data/http-proxy-cfg(/.*)? u:object_r:http_proxy_cfg_data_file:s0
+/data/log_temp(/.*)? u:object_r:logtemp_data_file:s0
+/data/lost\+found(/.*)? u:object_r:lost_found_data_file:s0
+/data/mdlog(/.*)? u:object_r:mdlog_data_file:s0
+/data/mdl(/.*)? u:object_r:mdlog_data_file:s0
+/data/mdl3(/.*)? u:object_r:mdlog_data_file:s0
+/data/mediaserver(/.*)? u:object_r:mediaserver_data_file:s0
+/data/misc/acdapi(/.*)? u:object_r:acdapi_data_file:s0
+/data/misc/akmd_set.txt u:object_r:akmd8963_access_file1:s0
+/data/misc/mblog(/.*)? u:object_r:logmisc_data_file:s0
+/data/misc/xlog(/.*)? u:object_r:xlog_data_file:s0
+/data/misc/PDC.ini u:object_r:akmd8963_access_file2:s0
+/data/misc/ppp(/.*)? u:object_r:ppp_data_file:s0
+/data/.tp(/.*)? u:object_r:thermal_manager_data_file:s0
+/data/misc/radvd(/.*)? u:object_r:radvd_data_file:s0
+/data/misc/sensor.log		u:object_r:bmm050_sensor_log_file:s0
+/data/misc/sensor(/.*)?		u:object_r:sensor_data_file:s0
+/data/misc/stp_dump(/.*)? u:object_r:stp_dump_data_file:s0
+/data/misc/wide-dhcpv6(/.*)? u:object_r:wide_dhcpv6_data_file:s0
+/data/misc/wpa_supplicant(/.*)? u:object_r:wpa_supplicant_data_file:s0
+/data/nfc_socket(/.*)? u:object_r:nfc_socket:s0
+/data/nvram(/.*)? u:object_r:nvram_data_file:s0
+/data/md3(/.*)? u:object_r:c2k_file:s0
+/nvdata(/.*)? u:object_r:nvdata_file:s0
+/data/SF_dump(./*)? u:object_r:sf_bqdump_data_file:s0
+/data/ipsec(/.*)? u:object_r:wod_ipsec_conf_file:s0
+/data/ipsec/wo(/.*)? u:object_r:wod_apn_conf_file:s0
+/data/data_tmpfs_log(/.*)? u:object_r:data_tmpfs_log_file:s0
+/data/tmp_mnt/data_tmpfs_log(/.*)? u:object_r:data_tmpfs_log_file:s0
+/data/setkey.conf        u:object_r:ims_ipsec_data_file:s0
+/data/setkey_bak.conf    u:object_r:ims_ipsec_data_file:s0
+/data/setkey_latest.conf u:object_r:ims_ipsec_data_file:s0
+/data/key_provisioning(/.*)?         u:object_r:key_install_data_file:s0
+/data/thh(/.*)? u:object_r:teei_data_file:s0
 
-# Hardware nodes
+##########################
+# Devices
+#
 /dev/aal_als(/.*)? u:object_r:aal_als_device:s0
 /dev/accdet(/.*)? u:object_r:accdet_device:s0
 /dev/AD5820AF(/.*)? u:object_r:AD5820AF_device:s0
@@ -164,56 +199,6 @@
 /dev/sensor(/.*)? u:object_r:sensor_device:s0
 /dev/smartpa_i2c(/.*)? u:object_r:smartpa1_device:s0
 /dev/snapshot(/.*)? u:object_r:snapshot_device:s0
-
-/dev/stpant(/.*)? u:object_r:stpant_device:s0
-/dev/stpbt(/.*)? u:object_r:stpbt_device:s0
-/dev/stpgps        u:object_r:mnld_device:s0
-/dev/stpgps(/.*)? u:object_r:stpgps_device:s0
-/dev/stpwmt(/.*)? u:object_r:stpwmt_device:s0
-/dev/sw_sync(/.*)? u:object_r:sw_sync_device:s0
-/dev/tgt(/.*)? u:object_r:tgt_device:s0
-/dev/touch(/.*)? u:object_r:touch_device:s0
-/dev/tpd_em_log(/.*)? u:object_r:tpd_em_log_device:s0
-/dev/ttyC0         u:object_r:gsm0710muxd_device:s0
-/dev/ttyC1 u:object_r:mdlog_device:s0
-/dev/ttyC2         u:object_r:agps_device:s0
-/dev/ttyC3 u:object_r:icusb_device:s0
-/dev/ttyGS.* u:object_r:ttyGS_device:s0
-/dev/ttyMT.* u:object_r:ttyMT_device:s0
-/dev/ttyp.* u:object_r:ttyp_device:s0
-/dev/ttySDIO.* u:object_r:ttySDIO_device:s0
-/dev/ttyUSB0         u:object_r:tty_device:s0
-/dev/ttyUSB1         u:object_r:tty_device:s0
-/dev/ttyUSB2         u:object_r:tty_device:s0
-/dev/ttyUSB3         u:object_r:tty_device:s0
-/dev/ttyUSB4         u:object_r:tty_device:s0
-/dev/TV-out(/.*)? u:object_r:TV_out_device:s0
-/dev/ubi_ctrl u:object_r:mtd_device:s0
-/dev/ubi[_0-9]* u:object_r:mtd_device:s0
-/dev/uboot(/.*)? u:object_r:uboot_device:s0
-/dev/uibc(/.*)? u:object_r:uibc_device:s0
-/dev/uinput(/.*)? u:object_r:uinput_device:s0
-/dev/uio0(/.*)? u:object_r:uio0_device:s0
-/dev/usrdata(/.*)? u:object_r:usrdata_device:s0
-/dev/Vcodec(/.*)? u:object_r:Vcodec_device:s0
-/dev/vmodem u:object_r:vmodem_device:s0
-/dev/vow(/.*)? u:object_r:vow_device:s0
-/dev/wmtdetect(/.*)? u:object_r:wmtdetect_device:s0
-/dev/wmtWifi(/.*)? u:object_r:wmtWifi_device:s0
-/dev/xlog u:object_r:xlog_device:s0
-/dev/offloadservice(/.*)? u:object_r:offloadservice_device:s0
-/dev/irtx u:object_r:irtx_device:s0
-/dev/ir-learning u:object_r:irrx_device:s0
-/dev/spm(/.*)? u:object_r:spm_device:s0
-
-/dev/xt_qtaguid(/.*)? u:object_r:xt_qtaguid_device:s0
-/dev/pmic_ftm(/.*)? u:object_r:pmic_ftm_device:s0
-/dev/shf  u:object_r:shf_device:s0
-
-
-
-# Sockets
-
 /dev/socket/adbd(/.*)? u:object_r:adbd_socket:s0
 /dev/socket/agpsd2(/.*)? u:object_r:agpsd_socket:s0
 /dev/socket/agpsd3(/.*)? u:object_r:agpsd_socket:s0
@@ -283,45 +268,83 @@
 /dev/socket/wod_sim(/.*)? u:object_r:wod_sim_socket:s0
 /dev/socket/wod_ipsec(/.*)? u:object_r:wod_ipsec_socket:s0
 /dev/socket/tunman(/.*)? u:object_r:tunman_socket:s0
+/dev/stpant(/.*)? u:object_r:stpant_device:s0
+/dev/stpbt(/.*)? u:object_r:stpbt_device:s0
+/dev/stpgps        u:object_r:mnld_device:s0
+/dev/stpgps(/.*)? u:object_r:stpgps_device:s0
+/dev/stpwmt(/.*)? u:object_r:stpwmt_device:s0
+/dev/sw_sync(/.*)? u:object_r:sw_sync_device:s0
+/dev/tgt(/.*)? u:object_r:tgt_device:s0
+/dev/touch(/.*)? u:object_r:touch_device:s0
+/dev/tpd_em_log(/.*)? u:object_r:tpd_em_log_device:s0
+/dev/ttyC0         u:object_r:gsm0710muxd_device:s0
+/dev/ttyC1 u:object_r:mdlog_device:s0
+/dev/ttyC2         u:object_r:agps_device:s0
+/dev/ttyC3 u:object_r:icusb_device:s0
+/dev/ttyGS.* u:object_r:ttyGS_device:s0
+/dev/ttyMT.* u:object_r:ttyMT_device:s0
+/dev/ttyp.* u:object_r:ttyp_device:s0
+/dev/ttySDIO.* u:object_r:ttySDIO_device:s0
+/dev/ttyUSB0         u:object_r:tty_device:s0
+/dev/ttyUSB1         u:object_r:tty_device:s0
+/dev/ttyUSB2         u:object_r:tty_device:s0
+/dev/ttyUSB3         u:object_r:tty_device:s0
+/dev/ttyUSB4         u:object_r:tty_device:s0
+/dev/TV-out(/.*)? u:object_r:TV_out_device:s0
+/dev/ubi_ctrl u:object_r:mtd_device:s0
+/dev/ubi[_0-9]* u:object_r:mtd_device:s0
+/dev/uboot(/.*)? u:object_r:uboot_device:s0
+/dev/uibc(/.*)? u:object_r:uibc_device:s0
+/dev/uinput(/.*)? u:object_r:uinput_device:s0
+/dev/uio0(/.*)? u:object_r:uio0_device:s0
+/dev/usrdata(/.*)? u:object_r:usrdata_device:s0
+/dev/Vcodec(/.*)? u:object_r:Vcodec_device:s0
+/dev/vmodem u:object_r:vmodem_device:s0
+/dev/vow(/.*)? u:object_r:vow_device:s0
+/dev/wmtdetect(/.*)? u:object_r:wmtdetect_device:s0
+/dev/wmtWifi(/.*)? u:object_r:wmtWifi_device:s0
+/dev/xlog u:object_r:xlog_device:s0
+/dev/offloadservice(/.*)? u:object_r:offloadservice_device:s0
+/dev/irtx u:object_r:irtx_device:s0
+/dev/ir-learning u:object_r:irrx_device:s0
+/dev/spm(/.*)? u:object_r:spm_device:s0
 
-# Block devices
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/boot      u:object_r:boot_block_device:s0
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/proinfo   u:object_r:proinfo_device:s0
-/dev/block/platform/mtk-msdc\.0/by-name/proinfo                        u:object_r:proinfo_device:s0
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/nvram     u:object_r:nvram_device:s0
-/dev/block/platform/mtk-msdc\.0/by-name/nvram                          u:object_r:nvram_device:s0
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/nvdata    u:object_r:nvdata_device:s0
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/logo      u:object_r:logo_block_device:s0
-/dev/block/platform/mtk-msdc\.0/by-name/logo                           u:object_r:logo_block_device:s0
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/protect1  u:object_r:protect1_device:s0
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/protect2  u:object_r:protect2_device:s0
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/userdata  u:object_r:userdata_block_device:s0
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/cache     u:object_r:cache_block_device:s0
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/recovery  u:object_r:recovery_block_device:s0
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/frp       u:object_r:frp_block_device:s0
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/metadata  u:object_r:metadata_block_device:s0
-/dev/block/platform/mtk-msdc\.0/[0-9]+\.(msdc|MSDC)0/by-name/para      u:object_r:para_block_device:s0
-/dev/block/mmcblk1                                                     u:object_r:mmc_device:s0
-/dev/block/zram0                                                       u:object_r:swap_block_device:s0
+/dev/xt_qtaguid(/.*)? u:object_r:xt_qtaguid_device:s0
+/dev/pmic_ftm(/.*)? u:object_r:pmic_ftm_device:s0
+/dev/shf  u:object_r:shf_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/proinfo  u:object_r:nvram_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/nvram  u:object_r:nvram_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/nvdata u:object_r:nvdata_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/frp  u:object_r:frp_block_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/expdb u:object_r:expdb_block_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/misc2 u:object_r:misc2_block_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/logo u:object_r:logo_block_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/para u:object_r:para_block_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/tee1 u:object_r:tee_block_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/tee2 u:object_r:tee_block_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/seccfg u:object_r:seccfg_block_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/secro u:object_r:secro_block_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/userdata u:object_r:userdata_block_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/cache u:object_r:cache_block_device:s0
+/dev/block/platform/mtk-msdc\.0/by-name/recovery u:object_r:recovery_block_device:s0
+/dev/block/mmcblk0boot0 u:object_r:preloader_block_device:s0
+/dev/block/mmcblk0boot1 u:object_r:preloader_block_device:s0
+/dev/block/mmcblk0 u:object_r:mmcblk0_block_device:s0
+/dev/block/mmcblk1 u:object_r:mmcblk1_block_device:s0
+/dev/block/mmcblk1p1 u:object_r:mmcblk1p1_block_device:s0
 
-# Sysfs nodes
-/sys/devices/virtual/gpsdrv(/.*)?                               u:object_r:sysfs_gps_file:s0
-/sys/kernel/ccci(/.*)?                                          u:object_r:sysfs_ccci:s0
-/sys/bus/platform/drivers/dev_info/dev_info                     u:object_r:sysfs_devinfo:s0
-/sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario      u:object_r:sysfs_membw:s0
-/sys/bus/platform/drivers/ddr_type/ddr_type                     u:object_r:sysfs_ddr_type:s0
-/sys/devices/virtual/BOOT/BOOT/boot/boot_mode                   u:object_r:sysfs_boot_mode:s0
-/sys/devices/platform/mtk_disp_mgr.0/rgb                        u:object_r:display_color_sysfs:s0
-/sys/bus/platform/drivers/msensor/daemon                        u:object_r:msensord_daemon_sysfs:s0
-/sys/bus/platform/drivers/gyroscope/gyro_orientation            u:object_r:gyro_orientation_sysfs:s0
-/sys/kernel/charge_levels/quick_charge_enable                   u:object_r:fast_charge_sysfs:s0
-/sys/kernel/charge_levels/charge_level_ac                       u:object_r:fast_charge_sysfs:s0
-/sys/kernel/charge_levels/charge_level_usb                      u:object_r:fast_charge_sysfs:s0
-/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq           u:object_r:perf_control_sysfs:s0
-/sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq           u:object_r:perf_control_sysfs:s0
-/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor           u:object_r:perf_control_sysfs:s0
-/sys/block/mmcblk0/queue/scheduler                              u:object_r:perf_control_sysfs:s0
-/sys/devices/.*/queue/scheduler                                 u:object_r:perf_control_sysfs:
+/protect_f(/.*)?         u:object_r:protect_f_data_file:s0
+/protect_s(/.*)?         u:object_r:protect_s_data_file:s0
+/persist(/.*)?         u:object_r:persist_data_file:s0
+/dev/ttyACM0        u:object_r:ttyACM_device:s0
+/dev/hrm       u:object_r:hrm_device:s0
+/dev/trusty-ipc-dev0 u:object_r:tee_device:s0
+/dev/teei_config u:object_r:teei_config_device:s0
+/dev/teei_client u:object_r:teei_client_device:s0
+/dev/tz_vfs u:object_r:teei_vfs_device:s0
+/dev/emmcrpmb0 u:object_r:teei_rpmb_device:s0
+/dev/teei_fp u:object_r:teei_fp_device:s0
+/dev/i2c_smartpa u:object_r:tfa9890_device:s0
 
 #############################
 # sysfs files
@@ -339,55 +362,6 @@
 /sys/devices/virtual/misc/md32(/.*)?  u:object_r:sysfs_md32:s0
 /sys/devices/virtual/misc/scp(/.*)?  u:object_r:sysfs_scp:s0
 
-# Config/Runtime files
-#############################
-# Data files
-#
-/data/aee_exp(/.*)?  u:object_r:aee_exp_data_file:s0
-/data/agps_supl(/.*)?    u:object_r:agpsd_data_file:s0
-/data/misc/gps(/.*)?   u:object_r:gps_data_file:s0
-/data/anr/SF_RTT(/.*)? u:object_r:sf_rtt_file:s0
-/data/app/mcRegistry(/.*)? u:object_r:mobicore_data_file:s0
-/data/ccci_cfg(/.*)? u:object_r:ccci_cfg_file:s0
-/data/flashless(/.*)? u:object_r:c2k_file:s0
-/data/core(/.*)? u:object_r:aee_core_data_file:s0
-/data/dontpanic(/.*)? u:object_r:dontpanic_data_file:s0
-/data/dumpsys(/.*)?    u:object_r:aee_dumpsys_data_file:s0
-/data/extmdl(/.*)? u:object_r:mdlog_data_file:s0
-/data/http-proxy-cfg(/.*)? u:object_r:http_proxy_cfg_data_file:s0
-/data/log_temp(/.*)? u:object_r:logtemp_data_file:s0
-/data/lost\+found(/.*)? u:object_r:lost_found_data_file:s0
-/data/mdlog(/.*)? u:object_r:mdlog_data_file:s0
-/data/mdl(/.*)? u:object_r:mdlog_data_file:s0
-/data/mdl3(/.*)? u:object_r:mdlog_data_file:s0
-/data/mediaserver(/.*)? u:object_r:mediaserver_data_file:s0
-/data/misc/acdapi(/.*)? u:object_r:acdapi_data_file:s0
-/data/misc/akmd_set.txt u:object_r:akmd8963_access_file1:s0
-/data/misc/mblog(/.*)? u:object_r:logmisc_data_file:s0
-/data/misc/xlog(/.*)? u:object_r:xlog_data_file:s0
-/data/misc/PDC.ini u:object_r:akmd8963_access_file2:s0
-/data/misc/ppp(/.*)? u:object_r:ppp_data_file:s0
-/data/.tp(/.*)? u:object_r:thermal_manager_data_file:s0
-/data/misc/radvd(/.*)? u:object_r:radvd_data_file:s0
-/data/misc/sensor.log		u:object_r:bmm050_sensor_log_file:s0
-/data/misc/sensor(/.*)?		u:object_r:sensor_data_file:s0
-/data/misc/stp_dump(/.*)? u:object_r:stp_dump_data_file:s0
-/data/misc/wide-dhcpv6(/.*)? u:object_r:wide_dhcpv6_data_file:s0
-/data/misc/wpa_supplicant(/.*)? u:object_r:wpa_supplicant_data_file:s0
-/data/nfc_socket(/.*)? u:object_r:nfc_socket:s0
-/data/nvram(/.*)? u:object_r:nvram_data_file:s0
-/data/md3(/.*)? u:object_r:c2k_file:s0
-/nvdata(/.*)? u:object_r:nvdata_file:s0
-/data/SF_dump(./*)? u:object_r:sf_bqdump_data_file:s0
-/data/ipsec(/.*)? u:object_r:wod_ipsec_conf_file:s0
-/data/ipsec/wo(/.*)? u:object_r:wod_apn_conf_file:s0
-/data/data_tmpfs_log(/.*)? u:object_r:data_tmpfs_log_file:s0
-/data/tmp_mnt/data_tmpfs_log(/.*)? u:object_r:data_tmpfs_log_file:s0
-/data/setkey.conf        u:object_r:ims_ipsec_data_file:s0
-/data/setkey_bak.conf    u:object_r:ims_ipsec_data_file:s0
-/data/setkey_latest.conf u:object_r:ims_ipsec_data_file:s0
-/data/key_provisioning(/.*)?         u:object_r:key_install_data_file:s0
-/data/thh(/.*)? u:object_r:teei_data_file:s0
 
 #############################
 # System files
@@ -518,10 +492,19 @@
 /system/bin/init_thh u:object_r:init_thh_service_exec:s0
 /system/bin/md_monitor u:object_r:md_monitor_exec:s0
 
-TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
+# Wallpaper file for smartbook
+/data/system/users/[0-9]+/smartbook_wallpaper	u:object_r:wallpaper_file:s0
 
-# SELinux
-BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+#lockscreen wallpaper add by Tauren
+/data/system/users/[0-9]+/lockscreen   u:object_r:wallpaper_file:s0
 
-# Seccomp filter
-BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
+#fat on nand image
+/fat(/.*)?  u:object_r:fon_image_data_file:s0
+
+#smart audio pa 
+/system/bin/smart_audio.sh  u:object_r:smart_audio_exec:s0
+
+# Fingerprint device
+/dev/esfp0(/.*)? u:object_r:esfp0_device:s0
+# ET310 etsd
+/system/bin/etsd u:object_r:etsd_exec:s0

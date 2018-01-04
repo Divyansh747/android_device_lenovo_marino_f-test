@@ -1,8 +1,8 @@
+# Camera
+USE_CAMERA_STUB := true
 
-PRODUCT_PACKAGES += \
-    Snap \
-    libcamera_parameters_ext
+# Legacy HAL
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 
-# Camera Legacy
-PRODUCT_PACKAGES += \
-    fs_config_files
+#Camera Wrappers
+#USE_MTK_CAMERA_WRAPPER := true
